@@ -7,8 +7,8 @@ namespace Assignment_Vending_Machine
 
         static void Main(string[] args)
         {
-            VendingMachine vendingMachine = new VendingMachine();
-            vendingMachine.VendingMachinery();  
+            Menu menu = new Menu();
+            menu.UserMenu();
         }
 
         public static void DisplayMessage(string message, ConsoleColor color = ConsoleColor.White)

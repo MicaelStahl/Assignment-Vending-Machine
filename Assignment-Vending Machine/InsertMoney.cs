@@ -7,6 +7,7 @@ namespace Assignment_Vending_Machine
     class InsertMoney
     {
         public List<int> money;
+        public InsertMoney change { get; set; }
 
         public InsertMoney()
         {
@@ -17,16 +18,14 @@ namespace Assignment_Vending_Machine
         {
             bool stayAlive = true;
             int coinsValue = 0;
-
+            
             while (stayAlive)
             {
                 try
                 {
-                    Console.Clear();
-
                     Program.DisplayMessage($"You can currently use {coinsValue} coins in this vending machine");
 
-                    Program.DisplayMessage("\nPlease insert a coin/paper value of your choosing (1, 5, 10, 20, 50, 100, 500, 1000)\nOr -1 to exit. ");
+                    Program.DisplayMessage("\nPlease insert a coin/paper value of your choosing (1, 5, 10, 20, 50, 100, 500, 1000) \nOr -1 to exit. \n");
                     int coinInsert = int.Parse(Console.ReadLine());
 
                     switch (coinInsert)
@@ -67,7 +66,12 @@ namespace Assignment_Vending_Machine
                             stayAlive = false;
                             break;
                         default:
-                            break;
+                            throw new Exception();
+                    }
+
+                    if (stayAlive == true)
+                    {
+                        Program.DisplayMessage($"You successfully added {coinInsert} to the moneypool!", ConsoleColor.Green);
                     }
                 }
                 catch (FormatException)
@@ -82,6 +86,12 @@ namespace Assignment_Vending_Machine
                 {
                     Program.DisplayMessage("Sorry, Null isn't a valid input. Please try again", ConsoleColor.Red);
                 }
+                catch (Exception)
+                {
+                    Program.DisplayMessage("That's an incorrect value, please try again.", ConsoleColor.Red);
+                }
+                Console.ReadKey();
+                Console.Clear();
             }
         }
     }

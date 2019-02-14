@@ -17,6 +17,8 @@ namespace Assignment_Vending_Machine
                 totalMoney = totalMoney + value;
             }
 
+            Program.DisplayMessage($"You will receive {totalMoney} back! \nHere's the change:\n");
+
             foreach (int value in changeBackArray)
             {
                 int coinsBack = totalMoney / value;

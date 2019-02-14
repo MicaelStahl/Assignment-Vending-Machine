@@ -6,28 +6,34 @@ namespace Assignment_Vending_Machine
 {
     class VendingMachine
     {
-        public InsertMoney change { get; set; }
-        public VendingMachine Machine { get; set; }
+        public List<int> ShopHistory;
+        public List<IProducts> Products;
 
-        public void VendingMachinery()
+        public VendingMachine()
+        {
+            ShopHistory = new List<int>();
+            Products = new List<IProducts>();
+        }
+
+        public void VendingMachinery(InsertMoney change)
         {
             Drinks CocaCola = new Drinks();
             Food Hamburger = new Food();
             Snacks Twix = new Snacks();
 
-            CocaCola.Name = "(C)oca Cola";
+            CocaCola.Name = "Coca Cola";
             CocaCola.Cost = 12;
             CocaCola.Description = "Cold beverage - perfect on warm summer days";
             CocaCola.Use = "You crack open the cold Coca Cola";
             CocaCola.Taste = "sweet, bubbly taste of heaven";
 
-            Hamburger.Name = "(H)amburger";
+            Hamburger.Name = "Hamburger";
             Hamburger.Cost = 29;
             Hamburger.Description = "A cheesy burger - perfect if you ever feel hungry";
             Hamburger.Use = "You unwrap the badboy to take a big bite out of it";
             Hamburger.Taste = "juicy texture of perfectly grilled meat together with cheese and salad";
 
-            Twix.Name = "(T)wix";
+            Twix.Name = "Twix";
             Twix.Cost = 10;
             Twix.Description = "A yummy snack - biscuity on the inside with a caramel top-layer and chocolate surrounding it";
             Twix.Use = "You start unwrapping the paper to eat a chunk out of both pieces like a beast";
@@ -35,14 +41,18 @@ namespace Assignment_Vending_Machine
 
 
             ProductMenu productMenu = new ProductMenu();
-            
-            List<IProducts> products = new List<IProducts>
-            {
-                CocaCola,
-                Hamburger,
-                Twix
-            };
-            productMenu.Menu(change, products, Twix, Hamburger, CocaCola);
+
+            Products.Add(CocaCola);
+            Products.Add(Hamburger);
+            Products.Add(Twix);
+
+            //List<IProducts> products = new List<IProducts>
+            //{
+            //    CocaCola,
+            //    Hamburger,
+            //    Twix
+            //};
+            productMenu.Menu(change, Products, CocaCola, Hamburger, Twix);
         }
     }
 }

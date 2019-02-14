@@ -36,7 +36,7 @@ namespace Assignment_Vending_Machine
                             change.Insert();
                             break;
                         case 2:
-                            Machine.VendingMachinery();
+                            Machine.VendingMachinery(change);
                             break;
                         case 3:
                             stayAlive = false;
@@ -46,8 +46,8 @@ namespace Assignment_Vending_Machine
                             stayAlive = false;
                             break;
 
-                        //default:
-                        //    throw new Exception();
+                        default:
+                            throw new Exception();
                     }
                 }
                 catch (FormatException)

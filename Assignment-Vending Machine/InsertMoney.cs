@@ -7,7 +7,7 @@ namespace Assignment_Vending_Machine
     class InsertMoney
     {
         public List<int> money;
-        public InsertMoney change { get; set; }
+        public InsertMoney Change { get; set; }
 
         public InsertMoney()
         {
@@ -18,6 +18,11 @@ namespace Assignment_Vending_Machine
         {
             bool stayAlive = true;
             int coinsValue = 0;
+
+            foreach (int value in money)
+            {
+                coinsValue = coinsValue + value;
+            }
             
             while (stayAlive)
             {

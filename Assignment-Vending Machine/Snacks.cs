@@ -19,7 +19,6 @@ namespace Assignment_Vending_Machine
         public int Cost { get { return cost; } set { cost = value; } }
         public string Description { get { return description; } set { description = value; } }
 
-
         public void ProductsInfo()
         {
             Program.DisplayMessage($"Product: {Name} \nCost: {Cost} Kr \nDescription: {Description} \n");

@@ -6,6 +6,11 @@ namespace Assignment_Vending_Machine
 {
     class AffordProducts
     {
+        public VendingMachine Machine { get; set; }
+        public Drinks CocaCola { get; set; }
+        public Food Hamburger { get; set; }
+        public Snacks Twix { get; set; }
+
         public int AffordDrinks(int totalMoney, Drinks CocaCola)
         {
             if (totalMoney >= CocaCola.Cost)

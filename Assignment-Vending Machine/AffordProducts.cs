@@ -6,53 +6,28 @@ namespace Assignment_Vending_Machine
 {
     class AffordProducts
     {
-        public VendingMachine Machine { get; set; }
-        public Drinks CocaCola { get; set; }
-        public Food Hamburger { get; set; }
-        public Snacks Twix { get; set; }
-
-        public int AffordDrinks(int totalMoney, Drinks CocaCola)
+        /// <summary>
+        /// Checks if the user has enough money for the desired product.
+        /// If yes - Sends out a message that the product has been used.
+        /// If no - Sends out a message that the user couldn't afford the product
+        /// </summary>
+        public int AffordProduct(int totalMoney, List<IProducts> ProductsValidation, InsertMoney Change)
         {
-            if (totalMoney >= CocaCola.Cost)
+            foreach (IProducts item in ProductsValidation)
             {
-                totalMoney -= CocaCola.Cost;
-                CocaCola.DrinksInfo();
-                return totalMoney;
-            }
-            Program.DisplayMessage(
-                "You couldn't afford the Coca Cola, " +
-                "please either pick something else or add more money to the vending machine", ConsoleColor.Red
-                );
-            return totalMoney;
-        }
+                if (totalMoney >= item.Cost)
+                {
+                    totalMoney -= item.Cost;
+                    Change.money.Add(-item.Cost);
+                    item.UseInfo();
 
-        public int AffordFood(int totalMoney, Food Hamburger)
-        {
-            if (totalMoney >= Hamburger.Cost)
-            {
-                totalMoney -= Hamburger.Cost;
-                Hamburger.FoodInfo();
-                return totalMoney;
+                    return totalMoney;
+                }
+                Program.DisplayMessage(
+               $"You couldn't afford the {item.Name}, " +
+               "please either pick something else or add more money to the vending machine", ConsoleColor.Red
+               );
             }
-            Program.DisplayMessage(
-                "You couldn't afford the Hamburger, " +
-                "please either pick something else or add more money to the vending machine", ConsoleColor.Red
-                );
-            return totalMoney;
-        }
-
-        public int AffordSnacks(int totalMoney, Snacks Twix)
-        {
-            if (totalMoney >= Twix.Cost)
-            {
-                totalMoney -= Twix.Cost;
-                Twix.SnacksInfo();
-                return totalMoney;
-            }
-            Program.DisplayMessage(
-                "You couldn't afford the Twix, " +
-                "please either pick something else or add more money to the vending machine", ConsoleColor.Red
-                );
             return totalMoney;
         }
     }

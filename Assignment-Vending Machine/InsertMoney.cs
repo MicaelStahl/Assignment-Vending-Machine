@@ -13,7 +13,9 @@ namespace Assignment_Vending_Machine
         {
             money = new List<int>();
         }
-
+        /// <summary>
+        /// This Method allows the user to put money in the vending machine itself.
+        /// </summary>
         public void Insert()
         {
             bool stayAlive = true;
@@ -23,7 +25,7 @@ namespace Assignment_Vending_Machine
             {
                 coinsValue = coinsValue + value;
             }
-            
+
             while (stayAlive)
             {
                 try
@@ -90,10 +92,6 @@ namespace Assignment_Vending_Machine
                 catch (ArgumentNullException)
                 {
                     Program.DisplayMessage("Sorry, Null isn't a valid input. Please try again", ConsoleColor.Red);
-                }
-                catch (Exception)
-                {
-                    Program.DisplayMessage("That's an incorrect value, please try again.", ConsoleColor.Red);
                 }
                 Console.ReadKey();
                 Console.Clear();

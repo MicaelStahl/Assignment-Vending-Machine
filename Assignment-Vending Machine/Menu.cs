@@ -6,7 +6,9 @@ namespace Assignment_Vending_Machine
 {
     class Menu
     {
-
+        /// <summary>
+        /// Main menu for the entire Assignment.
+        /// </summary>
         public int UserMenu()
         {
             bool stayAlive = true;
@@ -19,7 +21,7 @@ namespace Assignment_Vending_Machine
                 try
                 {
                     Program.DisplayMessage(
-                        "Please select a option:\n" +
+                        "\nPlease select a option:\n" +
                         "1: To insert money to the vending machine\n" +
                         "2: To look at the vending machines content\n" +
                         "3: To get your change back and exit the machine\n" +
@@ -61,10 +63,6 @@ namespace Assignment_Vending_Machine
                 catch (ArgumentNullException)
                 {
                     Program.DisplayMessage("Please try again", ConsoleColor.Red);
-                }
-                catch (Exception)
-                {
-                    Program.DisplayMessage("You did something wrong, please try again", ConsoleColor.Red);
                 }
             } while (stayAlive);
             return usefulNumber;

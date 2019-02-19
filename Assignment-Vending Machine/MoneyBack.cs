@@ -6,7 +6,9 @@ namespace Assignment_Vending_Machine
 {
     class MoneyBack
     {
-
+        /// <summary>
+        /// This Method gives the user back the remaining change (Works exactly the same as Exercise 19)
+        /// </summary>
         public static void MoneyBackCalculation(InsertMoney change)
         {
             int[] changeBackArray = { 1000, 500, 100, 50, 20, 10, 5, 1 };
@@ -17,7 +19,7 @@ namespace Assignment_Vending_Machine
                 totalMoney = totalMoney + value;
             }
 
-            Program.DisplayMessage($"You will receive {totalMoney} back! \nHere's the change:\n");
+            Program.DisplayMessage($"Your change is {totalMoney} \nHere's the change:\n");
 
             foreach (int value in changeBackArray)
             {
@@ -30,6 +32,7 @@ namespace Assignment_Vending_Machine
                 Program.DisplayMessage($"{value} coins = {coinsBack}");
             }
             Program.DisplayMessage("Thank you for using my vending machine, hope it lived up to your expectations!", ConsoleColor.Green);
+            Console.ReadKey(true);
         }
     }
 }
